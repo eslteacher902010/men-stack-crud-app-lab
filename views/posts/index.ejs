@@ -1,0 +1,33 @@
+<!-- views/fruits/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Posts</title>
+  </head>
+
+<body>
+  <h1>All Posts</h1>
+  <a href="/posts">Browse Posts</a>
+
+  <ul>
+    <% posts.forEach(post => { %>
+      <li>
+        <strong><a href="/posts/<%= post._id %>"></a><%= post.title %></strong>
+        <ul>
+          <li><%= post.content %></li>
+          <li>Posted? <%= post.isPosted %></li>
+        </ul>
+      </li>
+    <% }); %>
+  </ul>
+  <!-- views/posts/index.ejs -->
+<a href="/posts/new">Add New Posts</a>
+<!-- views/posts/new.ejs -->
+<a href="/posts/">Back to Posts</a>
+
+
+</body>
+
+
