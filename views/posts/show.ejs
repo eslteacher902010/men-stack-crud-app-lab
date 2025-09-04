@@ -10,15 +10,23 @@
   </head>
 
 <body>
+  <%- include('../partials/navbar') %>
+  <div class="welcome-text">
   <h1><%= post.name %></h1>
+  <div class="image">
+   <img src="<%= post.image %>" alt="Post image" />
   <p><%= post.content %></p>
-
+  </div>
   <!-- Conditional rendering based on post readiness -->
+  <div class="blink_me">
   <% if (post.isPosted) { %>
     <p>This post is live!</p>
+    </div>
+    <div class="not_live">
   <% } else { %>
     <p>This post is in draft form.</p>
   <% } %>
+  </div>
 <!-- delete -->
   <form action="/posts/<%=post._id%>?_method=DELETE" method="POST">
   <button type="submit">Delete <%= post.title %></button>
@@ -28,6 +36,6 @@
 
 
   <a href="/posts/">Back to Posts</a>
-
+</div>
 </body>
 </html>

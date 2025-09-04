@@ -60,5 +60,45 @@ body {
   font-size: 2.5rem;
   font-weight: bold;
   background-clip: text;
-  color: #6bb8ff;
+  color: whitesmoke;
  }
+
+  .pretty-text {
+  font-family: "Playwrite IT Moderna", cursive;
+  font-size: 2.5rem;
+  font-weight: bold;
+  background-clip: text;
+  color: #f47b5b;
+ }
+
+ .blink_me { 
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+    color: yellow;
+  }
+}
+
+
+/* this was from stack overflow haha */
+
+.not_live{
+  color:red;
+}
+
+.navbar {
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.image img {
+  max-width: 300px;  
+  height: auto;      
+  display: block;    
+  margin: 0 auto;     
+}

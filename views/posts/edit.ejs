@@ -10,12 +10,12 @@
 
   <body>
 <!-- updated form -->
-
+<%- include('../partials/navbar') %>
 <form action="/posts/<%=post._id%>?_method=PUT" method="POST">
-  <label for="title">Title:</label>
+  <title>Edit <%= post.title %></title>
 <input type="text" name="title" value="<%= post.title %>" />
 <textarea name="content" id="content"><%= post.content %></textarea>
-
+<input type="text" name="image" id="image" value="<%= post.image %>" />
 
   <label for="isPosted">Is it posted?</label>
 <input type="checkbox" name="isPosted" <% if (post.isPosted) { %>checked<% } %> >

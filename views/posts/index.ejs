@@ -10,23 +10,25 @@
 
   </head>
 
-<!-- views/posts/index.ejs -->
 
  <!-- index.ejs -->
 
  <body>
+  <%- include('../partials/navbar') %>
+  <div class="pretty-text">
    <div class="index-header-div">
      <h1>All Posts</h1>
      <a class="add-post" href="/posts/new">Add Post</a>
    </div>
    <ul>
      <% posts.forEach((post)=> { %>
-     <li>x
+     <li>
        <a class="post-cards" href="/posts/<%=post._id%>">
          <%= post.title %>
        </a>
      </li>
      <% }) %>
    </ul>
+   </div>
  </body>
 </html>
