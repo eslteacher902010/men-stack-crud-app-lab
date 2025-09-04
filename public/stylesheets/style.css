@@ -102,3 +102,20 @@ body {
   display: block;    
   margin: 0 auto;     
 }
+
+.back a {
+  display: inline-block;
+  padding: 8px 12px;
+  margin-right: 10px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  font-family: "Libre Baskerville", serif;
+  font-size: 20px;
+}
+
+.back a:hover {
+  background-color: #ddd;
+}

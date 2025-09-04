@@ -12,7 +12,7 @@
 <body>
   <%- include('../partials/navbar') %>
   <div class="welcome-text">
-  <h1><%= post.name %></h1>
+  <h1><%= post.title %></h1>
   <div class="image">
    <img src="<%= post.image %>" alt="Post image" />
   <p><%= post.content %></p>
@@ -31,11 +31,12 @@
   <form action="/posts/<%=post._id%>?_method=DELETE" method="POST">
   <button type="submit">Delete <%= post.title %></button>
 </form>
-
-<a href="/posts/<%= post._id %>/edit">Edit <%= post.name %></a>
+<div class="back"> 
+<a href="/posts/<%= post._id %>/edit">Edit <%= post.title %></a>
 
 
   <a href="/posts/">Back to Posts</a>
+  </div>
 </div>
 </body>
 </html>
