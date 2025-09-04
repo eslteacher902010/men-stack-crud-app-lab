@@ -1,33 +1,32 @@
 <!-- views/fruits/index.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Posts</title>
+    <title>Posts Index</title>
+           <link rel="stylesheet" href="/stylesheets/style.css" />
+
   </head>
 
-<body>
-  <h1>All Posts</h1>
-  <a href="/posts">Browse Posts</a>
+<!-- views/posts/index.ejs -->
 
-  <ul>
-    <% posts.forEach(post => { %>
-      <li>
-        <strong><a href="/posts/<%= post._id %>"></a><%= post.title %></strong>
-        <ul>
-          <li><%= post.content %></li>
-          <li>Posted? <%= post.isPosted %></li>
-        </ul>
-      </li>
-    <% }); %>
-  </ul>
-  <!-- views/posts/index.ejs -->
-<a href="/posts/new">Add New Posts</a>
-<!-- views/posts/new.ejs -->
-<a href="/posts/">Back to Posts</a>
+ <!-- index.ejs -->
 
-
-</body>
-
-
+ <body>
+   <div class="index-header-div">
+     <h1>All Posts</h1>
+     <a class="add-post" href="/posts/new">Add Post</a>
+   </div>
+   <ul>
+     <% posts.forEach((post)=> { %>
+     <li>x
+       <a class="post-cards" href="/posts/<%=post._id%>">
+         <%= post.title %>
+       </a>
+     </li>
+     <% }) %>
+   </ul>
+ </body>
+</html>

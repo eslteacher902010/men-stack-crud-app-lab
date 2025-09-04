@@ -1,0 +1,33 @@
+<!-- views/posts/show.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+           <link rel="stylesheet" href="/stylesheets/style.css" />
+
+    <title>Show Posts</title>
+  </head>
+
+<body>
+  <h1><%= post.name %></h1>
+  <p><%= post.content %></p>
+
+  <!-- Conditional rendering based on post readiness -->
+  <% if (post.isPosted) { %>
+    <p>This post is live!</p>
+  <% } else { %>
+    <p>This post is in draft form.</p>
+  <% } %>
+<!-- delete -->
+  <form action="/posts/<%=post._id%>?_method=DELETE" method="POST">
+  <button type="submit">Delete <%= post.title %></button>
+</form>
+
+<a href="/posts/<%= post._id %>/edit">Edit <%= post.name %></a>
+
+
+  <a href="/posts/">Back to Posts</a>
+
+</body>
+</html>

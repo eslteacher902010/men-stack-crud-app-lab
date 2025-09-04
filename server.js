@@ -24,8 +24,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(morgan("dev"));
 
+///middleware
+
+app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method")); // new
+app.use(morgan("dev")); //new
+
 app.get("/", (req, res) => {
-  res.send("Welcome, friend!");
+  res.render("index.ejs")
 });
 
 
@@ -40,16 +46,50 @@ app.get("/posts/new", (req, res) => {
 });
 
 
-// POST /fruits
+// POST /posts
 app.post("/posts", async (req, res) => {
   if (req.body.isPosted === "on") {
     req.body.isPosted = true;
   } else {
     req.body.isPosted = false;
   }
-  await Fruit.create(req.body);
-  res.redirect("/posts"); // redirect to index fruits
+  await Post.create(req.body);
+  res.redirect("/posts"); // redirect to index posts
 });
+
+app.get("/posts/:postId", async (req, res) => {
+  const foundPost = await Post.findById(req.params.postId);
+  res.render("posts/show.ejs", { post: foundPost });
+});
+
+app.delete("/posts/:postId", async (req, res) => {
+  await Post.findByIdAndDelete(req.params.postId);
+  res.redirect("/posts");
+});
+
+app.get("/posts/:postId/edit", async (req, res) => {
+  const foundPost = await Post.findById(req.params.postId);
+    res.render("posts/edit.ejs", {
+      post: foundPost
+
+    });
+});
+
+app.put("/posts/:postId", async (req, res) => {
+  
+  if (req.body.isPosted === "on") {
+    req.body.isPosted = true;
+  } else {
+    req.body.isPosted = false;
+  }
+  
+  // Update the post in the database
+  await Post.findByIdAndUpdate(req.params.postId, req.body);
+
+  // Redirect to the post's show page to see the updates
+  res.redirect(`/posts/${req.params.postId}`);
+});
+
 
 
 app.listen(3000, () => {
